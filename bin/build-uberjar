@@ -1,0 +1,2 @@
+mkdir -p build
+clojure -X:uberjar :jar build/vending-machine-api.jar :main-class is.mad.vending.core

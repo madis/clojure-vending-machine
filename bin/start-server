@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+clj -X:env/dev:env/test is.mad.vending.core/-main "{}"

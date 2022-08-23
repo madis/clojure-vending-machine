@@ -1,0 +1,17 @@
+{:paths ["src"]
+ :deps {org.clojure/clojure {:mvn/version "1.11.1"}
+        http-kit/http-kit {:mvn/version "2.6.0"}
+        ring/ring-core {:mvn/version "1.9.5"}
+        ring/ring-devel {:mvn/version "1.9.5"}
+        metosin/reitit {:mvn/version "0.5.18"}
+        javax.servlet/servlet-api {:mvn/version "2.5"}}
+ :aliases {:env/dev {:extra-deps {org.clojure/tools.namespace {:mvn/version "1.3.0"}}}
+           :env/test {:extra-paths ["test"]
+                       :extra-deps {lambdaisland/kaocha {:mvn/version "1.69.1069"}
+                                    ring/ring-mock {:mvn/version "0.4.0"}
+                                    org.clojure/data.json {:mvn/version "2.4.0"}}
+                       :main-opts ["-m" "kaocha.runner"]}
+           :uberjar {:replace-deps {com.github.seancorfield/depstar {:mvn/version "2.1.303"}}
+            :exec-fn hf.depstar/uberjar
+            :exec-args {:aot true
+                        :sync-pom true}}}}
