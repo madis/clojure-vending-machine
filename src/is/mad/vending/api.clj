@@ -26,20 +26,25 @@
 
        ["/user" {:post {:handler api-user/create
                         :summary "Create new user"
-                        :parameters {:body {:username string? :password string? :role string?}}}
+                        :parameters {:body {:username string? :password string? :role string?}}
+                        }
                  :get {:handler api-user/read
                        :summary "Read user data"
-                       :parameters {:query {:username string?}}}}]
+                       :parameters {:query {:username string?}}
+                       }}]
 
        ["/product" {:post {:handler api-product/create
                            :summary "Add new products to sale"
-                           :parameters {:body {:slot int? :code int? :quantity int? :size int? :name string? :price int?}}}
+                           :parameters {:body {:slot int? :code int? :quantity int? :size int? :name string? :price int?}}
+                           }
                     :get {:handler api-product/read
                           :summary "Get product details"
-                          :parameters {:query {:code int?}}}
+                          :parameters {:query {:code int?}}
+                          }
                     :delete {:handler api-product/delete
                              :summary "Remove product from sale"
-                             :parameters {:body {:code int?}}}}]]
+                             :parameters {:body {:code int?}}
+                             }}]]
 
       {:exception pretty/exception
        :data {:coercion reitit.coercion.spec/coercion
@@ -51,7 +56,7 @@
                            exception/exception-middleware
                            muuntaja/format-request-middleware
                            coercion/coerce-response-middleware
-                           coercion/coerce-request-middleware
+                           ; coercion/coerce-request-middleware
                            multipart/multipart-middleware]}})
     (ring/routes
       (swagger-ui/create-swagger-ui-handler
