@@ -56,7 +56,7 @@
                            exception/exception-middleware
                            muuntaja/format-request-middleware
                            coercion/coerce-response-middleware
-                           ; coercion/coerce-request-middleware
+                           coercion/coerce-request-middleware
                            multipart/multipart-middleware]}})
     (ring/routes
       (swagger-ui/create-swagger-ui-handler
